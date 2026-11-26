@@ -1,0 +1,1097 @@
+/* Simple shared styles for both pages. */
+
+body {
+  background: #f7f5ef;
+  color: #242b25;
+  font-family: "Nunito", "Arial Rounded MT Bold", system-ui, sans-serif;
+  margin: 0;
+  line-height: 1.6;
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid #dcded7;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 18px 12px;
+}
+
+.brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #243e2b;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+a {
+  color: #315c42;
+}
+
+.nav-links a {
+  color: #40483f;
+  text-decoration: none;
+}
+
+.nav-links a[aria-current] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.main-content {
+  max-width: 850px;
+  min-height: 65vh;
+  padding-top: 42px;
+  padding-bottom: 24px;
+}
+
+.intro {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  font-size: .8rem;
+  letter-spacing: .12em;
+  font-weight: 700;
+  color: #42604b;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.65rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: 1.45rem;
+  font-weight: 650;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid #dcded7;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+.hint {
+  font-size: .88rem;
+  color: #505b50;
+  margin: 10px 0 0;
+}
+
+.status {
+  color: #435346;
+  margin: 8px 0 0;
+}
+
+.status:empty {
+  display: none;
+}
+
+.btn-dark {
+  background: #294933;
+  border-color: #294933;
+}
+
+.btn-dark:hover {
+  background: #203b29;
+}
+
+.dog-image {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  background: #f2f2ed;
+  border-radius: 8px;
+}
+
+.image-message {
+  padding: 30px 12px;
+  background: #f2f2ed;
+  text-align: center;
+}
+
+.breed-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 20px 0 0;
+}
+
+.breed-facts div {
+  flex: 1 1 100px;
+  padding: 10px;
+  background: #f2f5ef;
+  border-radius: 6px;
+}
+
+dt {
+  font-size: .85rem;
+}
+
+dd {
+  margin: 0;
+}
+
+.file-preview {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #f2f5ef;
+  padding: 14px;
+  margin-top: 12px;
+  max-height: 350px;
+  overflow: auto;
+}
+
+.site-footer {
+  max-width: 850px;
+  font-size: .9rem;
+  color: #505b50;
+  padding: 15px 12px 30px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 12px;
+  padding: 10px;
+  background: white;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+:focus-visible {
+  outline: 3px solid #386a48;
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 575px) {
+  .main-content {
+    padding-top: 24px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+}
+
+/* Breed catalogue controls. */
+
+.browse-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.browse-heading h2 {
+  margin: 0;
+}
+
+#breedList option {
+  padding: 5px 8px;
+}
+
+
+/* Warm, playful colours shared by the two pages. */
+
+body {
+  background: #fff8ef;
+  color: #49352e;
+}
+
+header {
+  background: #fffdf9;
+  border-color: #efdfd2;
+}
+
+.site-nav,
+.main-content,
+.site-footer {
+  max-width: 980px;
+}
+
+.site-nav {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.brand {
+  font-family: "Fredoka", "Arial Rounded MT Bold", system-ui, sans-serif;
+  font-weight: 600;
+  color: #75482f;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.paw-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: #f9e0cf;
+  border-radius: 50%;
+  font-size: 1.2rem;
+}
+
+.nav-links a {
+  color: #674b40;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.nav-links a[aria-current] {
+  background: #f9e0cf;
+  text-decoration: none;
+}
+
+a {
+  color: #765038;
+}
+
+h1, h2 {
+  color: #62402e;
+  font-family: "Fredoka", "Arial Rounded MT Bold", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.12;
+}
+
+.eyebrow {
+  color: #91503e;
+  letter-spacing: .15em;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 24px;
+  background: #fae0d4;
+  border: 1px solid #f1c9b7;
+  border-radius: 26px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.hero-copy p:not(.eyebrow) {
+  max-width: 420px;
+  color: #624a40;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: #fff9ef;
+  color: #75482f;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: .85rem;
+  font-weight: 650;
+}
+
+.contact-intro {
+  background: #fae0d4;
+  padding: 30px;
+  border: 1px solid #f1c9b7;
+  border-radius: 26px;
+}
+
+.contact-intro p:last-child {
+  max-width: 650px;
+  margin-bottom: 0;
+}
+
+.panel {
+  background: #fffdf9;
+  border: 1px solid #eeded0;
+  border-radius: 22px;
+  box-shadow: 0 5px 18px #82513509;
+}
+
+.section-title {
+  margin-bottom: 15px;
+}
+
+.form-control, .form-select {
+  border-color: #dfc9ba;
+  border-radius: 12px;
+  color: #49352e;
+  padding: 10px 14px;
+  background-color: #fffcf8;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #a87659;
+  box-shadow: 0 0 0 3px #f8dfcf;
+}
+
+.btn {
+  border-radius: 12px;
+  font-weight: 650;
+  padding: 10px 18px;
+}
+
+.btn-dark {
+  background: #925139;
+  border-color: #925139;
+  color: #fff;
+}
+
+.btn-dark:hover, .btn-dark:focus {
+  background: #743e2a;
+  border-color: #743e2a;
+}
+
+.btn-dark:disabled {
+  background: #925139;
+  border-color: #925139;
+}
+
+.btn-outline-secondary {
+  color: #75482f;
+  border-color: #b58a71;
+}
+
+.btn-outline-secondary:hover {
+  background: #75482f;
+  border-color: #75482f;
+  color: #fff;
+}
+
+.hint, .status, .site-footer {
+  color: #70564a;
+}
+
+.dog-image, .image-message {
+  background: #fff1e4;
+  border-radius: 16px;
+}
+
+.breed-facts div, .file-preview {
+  background: #f0eee2;
+  border-radius: 12px;
+}
+
+:focus-visible {
+  outline-color: #925139;
+}
+
+/* Online dog GIF, with an option to hide the animation. */
+
+.puppy-area {
+  min-width: 0;
+  text-align: right;
+}
+
+.puppy-stage {
+  margin-top: 8px;
+  overflow: hidden;
+  border: 2px solid #fff8eb;
+  border-radius: 22px;
+  background: #fff3d9;
+}
+
+.puppy-stage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.puppy-area[hidden] {
+  display: none !important;
+}
+
+.hero.no-puppy {
+  grid-template-columns: 1fr;
+}
+
+.pause-input {
+  accent-color: #925139;
+}
+
+.pause-label {
+  color: #624a40;
+  font-size: .85rem;
+}
+
+.pause-input:checked ~ .puppy-stage {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 22px;
+    gap: 20px;
+  }
+
+  .contact-intro {
+    padding: 22px;
+  }
+}
+
+
+
+/* Favourite breed list. */
+
+.favourites-list {
+  list-style: none;
+  padding: 0;
+}
+
+.favourites-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  background: #fff1e4;
+}
+
+.favourite-name {
+  color: #75482f;
+  font-weight: 700;
+  background: none;
+  border: none;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.favourite-name:hover {
+  text-decoration: underline;
+}
+
+.gif-credit {
+  font-size: .75rem;
+  margin-top: 8px;
+}
+
+/* Keep form errors visible and layouts usable on small screens. */
+[aria-invalid="true"] {
+  border: 2px solid #a83b35;
+}
+
+.form-control, .form-select {
+  border-color: #a98b79;
+}
+
+.favourite-name {
+  min-width: 0;
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+@media (max-width: 400px) {
+  .hero, .panel {
+    padding: 16px;
+  }
+
+  .nav-links {
+    gap: 6px;
+  }
+
+  .favourites-list li {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* Small decorative dog animations placed around the two pages. */
+
+.has-stickers {
+  position: relative;
+  overflow: hidden;
+}
+
+.has-stickers > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dog-sticker {
+  position: absolute;
+  top: var(--top, auto);
+  right: var(--right, auto);
+  bottom: var(--bottom, auto);
+  left: var(--left, auto);
+  width: var(--size, 44px);
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  image-rendering: pixelated;
+  opacity: 0.98;
+}
+
+.dog-sticker.flip {
+  transform: scaleX(-1);
+}
+
+.hero.has-stickers {
+  min-height: 255px;
+}
+
+.contact-intro.has-stickers {
+  min-height: 225px;
+}
+
+.panel.has-stickers {
+  min-height: 145px;
+}
+
+#breedResult.has-stickers {
+  min-height: 320px;
+}
+
+@media (max-width: 700px) {
+  .dog-sticker {
+    width: calc(var(--size, 44px) * 0.8);
+  }
+
+  .hero.has-stickers,
+  .contact-intro.has-stickers {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .dog-sticker {
+    display: none;
+  }
+}
+
+
+
+
+/* Cleaner decorative dog placement. */
+
+a.has-stickers, .has-stickers {
+  position: relative;
+  overflow: hidden;
+}
+
+.dog-sticker {
+  display: none !important;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.dog-parade {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.hero-parade {
+  margin-top: 18px;
+  gap: 22px;
+}
+
+.contact-parade {
+  margin-top: 20px;
+}
+
+.panel-parade {
+  margin-top: 14px;
+  padding-top: 8px;
+  border-top: 1px dashed #efd6c6;
+}
+
+.panel-parade.right {
+  justify-content: flex-end;
+}
+
+.panel-parade.left {
+  justify-content: flex-start;
+}
+
+.panel-parade.spaced {
+  justify-content: space-between;
+}
+
+.dog-sprite {
+  width: 172px;
+  max-width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  flex: 0 0 auto;
+}
+
+.dog-sprite.large {
+  width: 208px;
+}
+
+.hero.has-stickers {
+  grid-template-columns: 1fr;
+  min-height: auto;
+}
+
+.contact-intro.has-stickers,
+.panel.has-stickers,
+#breedResult.has-stickers {
+  min-height: auto;
+}
+
+@media (max-width: 700px) {
+  .dog-sprite.large {
+    width: 177px;
+  }
+
+  .dog-sprite {
+    width: 146px;
+  }
+
+  .panel-parade.spaced {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 540px) {
+  .dog-parade {
+    gap: 12px;
+  }
+
+  .dog-sprite.large {
+    width: 151px;
+  }
+
+  .dog-sprite {
+    width: 125px;
+  }
+}
+
+
+
+
+/* Extra tidy animations for readability. */
+
+.site-nav,
+.hero,
+.contact-intro,
+form.panel,
+section.panel {
+  animation: fadeUp .75s ease both;
+}
+
+form.panel {
+  animation-delay: .08s;
+}
+
+section.panel:nth-of-type(1) {
+  animation-delay: .14s;
+}
+
+section.panel:nth-of-type(2) {
+  animation-delay: .2s;
+}
+
+section.panel:nth-of-type(3) {
+  animation-delay: .26s;
+}
+
+.paw-mark {
+  animation: pawBounce 2.8s ease-in-out infinite;
+}
+
+.hero,
+.contact-intro,
+.panel,
+.btn,
+.nav-links a,
+.dog-image,
+.favourites-list li {
+  transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease;
+}
+
+.panel:hover,
+.hero:hover,
+.contact-intro:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(130, 81, 53, 0.12);
+}
+
+.nav-links a:hover {
+  background: #fff1e4;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-1px);
+}
+
+.dog-image:not([hidden]) {
+  animation: softPop .45s ease;
+}
+
+.favourites-list li {
+  animation: fadeUp .45s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pawBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes softPop {
+  from {
+    opacity: 0;
+    transform: scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+
+/* Animation control at the top of both pages. */
+.nav-links {
+  align-items: center;
+}
+
+.animation-toggle {
+  background: #fffdf9;
+  color: #75482f;
+  border: 1px solid #b58a71;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.animation-toggle:hover {
+  background: #f9e0cf;
+}
+
+/* Hide decorative GIFs and disable motion without hiding content. */
+body.animations-hidden .dog-parade {
+  display: none;
+}
+
+body.animations-hidden *,
+body.animations-hidden *::before,
+body.animations-hidden *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+body.animations-hidden .panel:hover,
+body.animations-hidden .hero:hover,
+body.animations-hidden .contact-intro:hover,
+body.animations-hidden .btn:hover,
+body.animations-hidden .btn:focus-visible {
+  transform: none;
+}
+
+
+/* Match the popup button focus ring to the website colour. */
+.swal2-popup .swal2-styled.swal2-confirm:focus-visible {
+  outline: 3px solid #925139;
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+
+/* Keep autocomplete text readable in every browser. */
+.breed-suggestions {
+  margin-top: 5px;
+  background: #fffdf9;
+  color: #49352e;
+  border: 1px solid #a98b79;
+  border-radius: 12px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.breed-suggestion {
+  padding: 8px 14px;
+  color: #49352e;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.breed-suggestion:hover,
+.breed-suggestion[aria-selected="true"] {
+  background: #f9e0cf;
+  color: #49352e;
+}
+
+
+/* Breed details popup: keep the background page in its original position. */
+.breed-dialog {
+  width: 860px;
+  max-width: calc(100% - 28px);
+  max-height: calc(100% - 32px);
+  margin: auto;
+  padding: 24px;
+  overflow: auto;
+  color: #49352e;
+  background: #fffdf9;
+  border: 1px solid #eeded0;
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(73, 53, 46, .22);
+  overscroll-behavior: contain;
+}
+
+.breed-dialog::backdrop {
+  background: rgba(73, 53, 46, .46);
+}
+
+.breed-dialog[open] {
+  animation: softPop .22s ease;
+}
+
+body:has(.breed-dialog[open]) {
+  overflow: hidden;
+}
+
+.close-breed {
+  display: block;
+  margin: 0 0 18px auto;
+}
+
+/* Keep the existing dogs, but leave more room for the breed information. */
+
+@media (max-width: 575px) {
+  .breed-dialog {
+    padding: 16px;
+  }
+
+  .breed-dialog .dog-image {
+    height: 200px;
+  }
+}
+
+
+/* Accessible filters arranged in a responsive grid. */
+.breed-filter-form { margin-top: 20px; }
+.breed-filter-form fieldset { min-width: 0; }
+.breed-filter-form legend { font-family: "Fredoka", sans-serif; font-size: 1.2rem; color: #62402e; }
+.filter-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.filter-field { min-width: 0; }
+.filter-field .form-label { font-size: .9rem; }
+.filter-field .form-select { width: 100%; }
+.advanced-filters, .breed-extra { margin-top: 16px; padding: 14px; border: 1px solid #dfc9ba; border-radius: 12px; background: #fff8ef; }
+.advanced-filters summary, .breed-extra summary { font-weight: 700; cursor: pointer; color: #75482f; }
+.filter-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.sort-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.sort-row .form-label { margin: 0; }
+.sort-row .form-select { width: auto; max-width: 100%; }
+.breed-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.breed-facts dd { overflow-wrap: anywhere; }
+@media (max-width: 700px) { .filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 390px) { .filter-grid { grid-template-columns: 1fr; } }
+
+
+/* Place the photo and description above the full-width fact cards. */
+.breed-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.breed-overview figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.breed-overview p {
+  overflow-wrap: anywhere;
+}
+
+/* Two equal columns leave no unused space beside the fact cards. */
+.breed-dialog .breed-facts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.breed-dialog .breed-facts div {
+  min-width: 0;
+  padding: 12px 14px;
+}
+
+/* Stack the overview on phones and cards on very narrow screens. */
+@media (max-width: 575px) {
+  .breed-overview {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 390px) {
+  .breed-dialog .breed-facts {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Popup navigation and actions. */
+.breed-toolbar,
+.breed-navigation,
+.breed-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.breed-toolbar {
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.breed-toolbar .close-breed {
+  margin: 0 0 0 auto;
+}
+
+.breed-position {
+  font-size: .88rem;
+  color: #70564a;
+  white-space: nowrap;
+}
+
+.breed-title-row h2 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.breed-title-row .btn,
+.copy-breed {
+  font-size: .85rem;
+  padding: 7px 12px;
+}
+
+#addFavourite[aria-pressed="true"] {
+  background: #f9e0cf;
+  color: #75482f;
+}
+
+.copy-breed {
+  margin: 10px 0 12px;
+}
+
+.breed-temperament {
+  color: #925139;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* Separate the full-width information cards by topic. */
+.breed-fact-group {
+  margin-top: 26px;
+}
+
+.breed-fact-group h3 {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #62402e;
+  margin: 0 0 10px;
+}
+
+.breed-fact-group .breed-facts {
+  margin-top: 0;
+}
+
+.country-flag {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+/* A single brown colour palette: darker cards indicate higher scores. */
+.score-visual {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.score-stars {
+  display: inline-flex;
+  gap: 2px;
+  line-height: 1.2;
+  font-size: 1.2rem;
+}
+
+.star.filled,
+.star.empty {
+  color: #75482f;
+}
+
+.score-number {
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.breed-dialog .breed-facts div[data-score="1"] { background: #faf3e9; }
+.breed-dialog .breed-facts div[data-score="2"] { background: #f3e4d5; }
+.breed-dialog .breed-facts div[data-score="3"] { background: #ebd3bd; }
+.breed-dialog .breed-facts div[data-score="4"] { background: #dfbda0; }
+.breed-dialog .breed-facts div[data-score="5"] { background: #d0a27f; }
+
+@media (max-width: 575px) {
+  .breed-toolbar .btn {
+    padding: 7px 10px;
+  }
+}

@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://images.dogapi.dog https://dogapi.dog https://preview.redd.it data:; connect-src 'self' https://dogapi.dog; object-src 'none'; base-uri 'none'; form-action 'none'">
+
+  <title>Home | Dog Breed Explorer</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&amp;family=Nunito:wght@400;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <nav class="container site-nav" aria-label="Main navigation">
+      <a class="brand" href="index.html"><span class="paw-mark" aria-hidden="true">🐾</span> Dog Breed Explorer</a>
+      <div class="nav-links">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="contact.html" >About / Contact</a>
+        <button id="animationToggle" class="animation-toggle" type="button" hidden>Hide animations</button>
+      </div>
+    </nav>
+  </header>
+
+  <noscript><p class="container">Enable JavaScript to search breeds and use favourites.</p></noscript>
+
+  <!-- Decorative dog art: Pet Dogs Pack by LuizMelo (https://luizmelo.itch.io/pet-dogs-pack). -->
+  <main id="main" tabindex="-1" class="container main-content">
+
+    <section class="intro hero has-stickers">
+      <div class="hero-copy">
+        <h1>Find your favourite dog breed.</h1>
+        <p>Big paws, little paws and everything in between. Discover dog breeds and get to know their unique personalities.</p>
+        <div class="dog-parade hero-parade" aria-hidden="true">
+          <img class="dog-sprite large" src="images/sprites/golden-walk.gif" alt="">
+          <img class="dog-sprite large" src="images/sprites/akita-run.gif" alt="">
+          <img class="dog-sprite large" src="images/sprites/great-dane-idle.gif" alt="">
+        </div>
+      </div>
+    </section>
+
+    <form id="searchForm" class="panel has-stickers" novalidate>
+      <h2 class="section-title"><span aria-hidden="true">🐾</span> Find a friend</h2>
+      <label for="breedInput" class="form-label">Dog breed</label>
+      <div class="row g-2">
+        <div class="col-sm-9">
+          <input id="breedInput" class="form-control" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="breedSuggestions" autocomplete="off" maxlength="80" required placeholder="e.g. Labrador Retriever" aria-describedby="searchHelp searchStatus">
+          <div id="breedSuggestions" class="breed-suggestions" role="listbox" aria-label="Dog breed suggestions" hidden></div>
+        </div>
+        <div class="col-sm-3">
+          <button id="searchBtn" type="submit" disabled class="btn btn-dark w-100">Search</button>
+        </div>
+      </div>
+      <p id="searchHelp" class="hint">Start typing to see breed suggestions, then select one and press Search. You can also browse the full list below.</p>
+      <p id="searchStatus" role="status" class="status" aria-live="polite"></p>
+      <div class="dog-parade panel-parade right" aria-hidden="true">
+        <img class="dog-sprite" src="images/sprites/schnauzer-itching.gif" alt="">
+        <img class="dog-sprite" src="images/sprites/saint-bernard-licking2.gif" alt="">
+      </div>
+    </form>
+
+    <section class="panel has-stickers" aria-labelledby="browseTitle">
+      <div class="browse-heading">
+        <h2 id="browseTitle"><span aria-hidden="true">🐾</span> Browse dog breeds</h2>
+        <button id="showAllBtn" type="button" class="btn btn-outline-secondary btn-sm" disabled>Show all breeds</button>
+      </div>
+
+      <form id="filterForm" class="breed-filter-form">
+        <fieldset id="filterFields" disabled>
+          <legend>Filter breeds</legend>
+          <p class="hint">Combine filters to explore the full catalogue, separately from the name search. Weight, height and life span use the midpoint of the available breed ranges.</p>
+          <div class="filter-grid">
+          <div class="filter-field">
+            <label for="filter-size" class="form-label">Size</label>
+            <select id="filter-size" name="size" class="form-select" data-filter="size">
+              <option value="">Any</option>
+              <option value="toy">Toy (under 5 kg)</option>
+              <option value="small">Small (5–under 10 kg)</option>
+              <option value="medium">Medium (10–under 25 kg)</option>
+              <option value="large">Large (25–under 40 kg)</option>
+              <option value="giant">Giant (40 kg and over)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-weight" class="form-label">Weight</label>
+            <select id="filter-weight" name="weight" class="form-select" data-filter="weight">
+              <option value="">Any</option>
+              <option value="0:10">Under 10 kg</option>
+              <option value="10:25">10–under 25 kg</option>
+              <option value="25:45">25–under 45 kg</option>
+              <option value="45:">45 kg and over</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-height" class="form-label">Height</label>
+            <select id="filter-height" name="height" class="form-select" data-filter="height">
+              <option value="">Any</option>
+              <option value="0:30">Under 30 cm</option>
+              <option value="30:50">30–under 50 cm</option>
+              <option value="50:70">50–under 70 cm</option>
+              <option value="70:">70 cm and over</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-country" class="form-label">Country of origin</label>
+            <select id="filter-country" name="country" class="form-select" data-filter="country">
+              <option value="">Any</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-life" class="form-label">Life span</label>
+            <select id="filter-life" name="life" class="form-select" data-filter="life">
+              <option value="">Any</option>
+              <option value="0:10">Under 10 years</option>
+              <option value="10:12">10–under 12 years</option>
+              <option value="12:15">12–under 15 years</option>
+              <option value="15:">15 years and over</option>
+            </select>
+          </div>
+          </div>
+          <details class="advanced-filters">
+            <summary>Advanced filters</summary>
+            <div class="filter-grid mt-3">
+          <div class="filter-field">
+            <label for="filter-group" class="form-label">Breed group</label>
+            <select id="filter-group" name="group" class="form-select" data-filter="group">
+              <option value="">Any</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-coat" class="form-label">Coat length</label>
+            <select id="filter-coat" name="coat" class="form-select" data-filter="coat">
+              <option value="">Any</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-coatType" class="form-label">Coat type</label>
+            <select id="filter-coatType" name="coatType" class="form-select" data-filter="coatType">
+              <option value="">Any</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-colour" class="form-label">Coat colour</label>
+            <select id="filter-colour" name="colour" class="form-select" data-filter="colour">
+              <option value="">Any</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-temperament" class="form-label">Temperament</label>
+            <select id="filter-temperament" name="temperament" class="form-select" data-filter="temperament">
+              <option value="">Any</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-energy" class="form-label">Energy level</label>
+            <select id="filter-energy" name="energy" class="form-select" data-filter="energy">
+              <option value="">Any</option>
+              <option value="low">Low (1–2)</option>
+              <option value="moderate">Moderate (3)</option>
+              <option value="high">High (4–5)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-shedding" class="form-label">Shedding level</label>
+            <select id="filter-shedding" name="shedding" class="form-select" data-filter="shedding">
+              <option value="">Any</option>
+              <option value="low">Low (1–2)</option>
+              <option value="moderate">Moderate (3)</option>
+              <option value="high">High (4–5)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-exercise" class="form-label">Daily exercise</label>
+            <select id="filter-exercise" name="exercise" class="form-select" data-filter="exercise">
+              <option value="">Any</option>
+              <option value="0:30">Under 30 min</option>
+              <option value="30:60">30–under 60 min</option>
+              <option value="60:90">60–under 90 min</option>
+              <option value="90:">90 min and over</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-trainability" class="form-label">Trainability</label>
+            <select id="filter-trainability" name="trainability" class="form-select" data-filter="trainability">
+              <option value="">Any</option>
+              <option value="low">Low (1–2)</option>
+              <option value="moderate">Moderate (3)</option>
+              <option value="high">High (4–5)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-barking" class="form-label">Barking level</label>
+            <select id="filter-barking" name="barking" class="form-select" data-filter="barking">
+              <option value="">Any</option>
+              <option value="low">Low (1–2)</option>
+              <option value="moderate">Moderate (3)</option>
+              <option value="high">High (4–5)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-grooming" class="form-label">Grooming needs</label>
+            <select id="filter-grooming" name="grooming" class="form-select" data-filter="grooming">
+              <option value="">Any</option>
+              <option value="low">Low (1–2)</option>
+              <option value="moderate">Moderate (3)</option>
+              <option value="high">High (4–5)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-drooling" class="form-label">Drooling level</label>
+            <select id="filter-drooling" name="drooling" class="form-select" data-filter="drooling">
+              <option value="">Any</option>
+              <option value="low">Low (1–2)</option>
+              <option value="moderate">Moderate (3)</option>
+              <option value="high">High (4–5)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-children" class="form-label">Good with children</label>
+            <select id="filter-children" name="children" class="form-select" data-filter="children">
+              <option value="">Any</option>
+              <option value="low">Low (1–2)</option>
+              <option value="moderate">Moderate (3)</option>
+              <option value="high">High (4–5)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-dogs" class="form-label">Good with dogs</label>
+            <select id="filter-dogs" name="dogs" class="form-select" data-filter="dogs">
+              <option value="">Any</option>
+              <option value="low">Low (1–2)</option>
+              <option value="moderate">Moderate (3)</option>
+              <option value="high">High (4–5)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-strangers" class="form-label">Good with strangers</label>
+            <select id="filter-strangers" name="strangers" class="form-select" data-filter="strangers">
+              <option value="">Any</option>
+              <option value="low">Low (1–2)</option>
+              <option value="moderate">Moderate (3)</option>
+              <option value="high">High (4–5)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-apartment" class="form-label">Apartment friendly</label>
+            <select id="filter-apartment" name="apartment" class="form-select" data-filter="apartment">
+              <option value="">Any</option>
+              <option value="low">Low (1–2)</option>
+              <option value="moderate">Moderate (3)</option>
+              <option value="high">High (4–5)</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-hypoallergenic" class="form-label">Hypoallergenic</label>
+            <select id="filter-hypoallergenic" name="hypoallergenic" class="form-select" data-filter="hypoallergenic">
+              <option value="">Any</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+            </div>
+          </details>
+          <p class="hint">Breeds with missing information are excluded only when the relevant filter is selected. Trait ratings are general breed estimates, not guarantees.</p>
+          <div class="filter-actions">
+            <button type="submit" class="btn btn-dark">Apply filters</button>
+            <button id="resetFilters" type="button" class="btn btn-outline-secondary">Reset filters</button>
+          </div>
+        </fieldset>
+      </form>
+      <div class="sort-row">
+        <label for="breedSort" class="form-label">Sort by</label>
+        <select id="breedSort" class="form-select" disabled>
+          <optgroup label="Name and origin">
+            <option value="name">Name: A–Z</option>
+            <option value="nameDesc">Name: Z–A</option>
+            <option value="countryAsc">Country of origin: A–Z</option>
+            <option value="countryDesc">Country of origin: Z–A</option>
+          </optgroup>
+          <optgroup label="Physical characteristics">
+            <option value="weightAsc">Weight: Lightest first</option>
+            <option value="weightDesc">Weight: Heaviest first</option>
+            <option value="heightAsc">Height: Shortest first</option>
+            <option value="heightDesc">Height: Tallest first</option>
+            <option value="lifeAsc">Life span: Shortest first</option>
+            <option value="lifeDesc">Life span: Longest first</option>
+          </optgroup>
+          <optgroup label="Personality &amp; behaviour">
+            <option value="energyAsc">Energy: Lowest first</option>
+            <option value="energyDesc">Energy: Highest first</option>
+            <option value="trainabilityAsc">Trainability: Lowest first</option>
+            <option value="trainabilityDesc">Trainability: Highest first</option>
+            <option value="barkingAsc">Barking: Lowest first</option>
+            <option value="barkingDesc">Barking: Highest first</option>
+            <option value="childrenAsc">Good with children: Lowest first</option>
+            <option value="childrenDesc">Good with children: Highest first</option>
+            <option value="dogsAsc">Good with dogs: Lowest first</option>
+            <option value="dogsDesc">Good with dogs: Highest first</option>
+            <option value="strangersAsc">Good with strangers: Lowest first</option>
+            <option value="strangersDesc">Good with strangers: Highest first</option>
+          </optgroup>
+          <optgroup label="Care &amp; lifestyle">
+            <option value="exerciseAsc">Daily exercise: Least first</option>
+            <option value="exerciseDesc">Daily exercise: Most first</option>
+            <option value="sheddingAsc">Shedding: Lowest first</option>
+            <option value="sheddingDesc">Shedding: Highest first</option>
+            <option value="groomingAsc">Grooming needs: Lowest first</option>
+            <option value="groomingDesc">Grooming needs: Highest first</option>
+            <option value="droolingAsc">Drooling: Lowest first</option>
+            <option value="droolingDesc">Drooling: Highest first</option>
+            <option value="apartmentAsc">Apartment friendly: Lowest first</option>
+            <option value="apartmentDesc">Apartment friendly: Highest first</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <p id="breedCount" class="hint" role="status">Loading dog breeds...</p>
+
+      <label for="breedList" class="form-label mt-3">Select a breed</label>
+      <select id="breedList" class="form-select" size="6" disabled aria-describedby="breedCount"></select>
+          <div class="dog-parade panel-parade left" aria-hidden="true">
+        <img class="dog-sprite" src="images/sprites/husky-stretching.gif" alt="">
+        <img class="dog-sprite" src="images/sprites/golden-bark.gif" alt="">
+      </div>
+    </section>
+
+    <section class="panel has-stickers" aria-labelledby="favouritesTitle">
+      <h2 id="favouritesTitle">♡ My favourite dogs</h2>
+      <p class="hint">Keep a list of your favourite breeds on this device. Export it as a text file or import a saved list.</p>
+      <ul id="favouritesList" class="favourites-list"></ul>
+      <p id="favouritesEmpty" class="hint">No favourite breeds yet.</p>
+
+      <button id="exportFavourites" type="button" class="btn btn-dark">Export favourites (.txt)</button>
+
+      <div class="mt-3">
+        <label for="importFavourites" class="form-label">Import favourites (.txt)</label>
+        <input id="importFavourites" type="file" accept=".txt,text/plain" class="form-control">
+      </div>
+
+      <p id="favouritesStatus" class="status" role="status" aria-live="polite"></p>
+      <div class="dog-parade panel-parade spaced" aria-hidden="true">
+        <img class="dog-sprite" src="images/sprites/saint-bernard-sleeping.gif" alt="">
+        <img class="dog-sprite" src="images/sprites/husky-run.gif" alt="">
+      </div>
+    </section>
+  </main>
+
+  <dialog id="breedResult" class="breed-dialog" aria-labelledby="breedName">
+    <!-- Move through the current filtered and sorted breed list. -->
+    <div class="breed-toolbar">
+      <div class="breed-navigation" aria-label="Browse results">
+        <button id="previousBreed" class="btn btn-outline-secondary btn-sm" type="button" disabled>‹ Previous</button>
+        <span id="breedPosition" class="breed-position" role="status"></span>
+        <button id="nextBreed" class="btn btn-outline-secondary btn-sm" type="button" disabled>Next ›</button>
+      </div>
+      <button id="closeBreed" class="btn btn-outline-secondary btn-sm close-breed" type="button" autofocus>Close ×</button>
+    </div>
+
+    <!-- Keep the photo and breed description together at the top. -->
+    <div class="breed-overview">
+      <figure class="mb-0">
+        <img id="dogImage" class="dog-image" alt="" hidden>
+        <p id="imageMessage" class="image-message" hidden>No credited image is available, or the photo could not load.</p>
+        <figcaption id="imageCredit" class="hint" hidden>
+          <span id="creditText"></span>
+          <a id="photoSource" target="_blank" rel="noopener noreferrer" hidden>Source</a>
+          <a id="photoLicence" target="_blank" rel="noopener noreferrer" hidden>Licence</a>
+        </figcaption>
+      </figure>
+      <div class="breed-summary">
+        <div class="breed-title-row">
+          <h2 id="breedName"></h2>
+          <button id="addFavourite" class="btn btn-dark btn-sm" type="button" aria-pressed="false" disabled>♡ Add to favourites</button>
+        </div>
+        <button id="copyBreedName" class="btn btn-outline-secondary btn-sm copy-breed" type="button">Copy name</button>
+        <p id="breedDescription"></p>
+        <!-- Show API temperament tags only when available. -->
+        <p id="breedTemperament" class="breed-temperament" hidden></p>
+        <p id="breedFavouriteStatus" class="status" role="status" aria-live="polite"></p>
+        <p id="copyBreedStatus" class="status" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <!-- Group fact cards by topic while keeping the full popup width. -->
+    <section class="breed-fact-group">
+      <h3>General Information</h3>
+      <dl class="breed-facts">
+        <div><dt>Life span</dt><dd id="breedLife"></dd></div>
+        <div><dt>Country of origin</dt><dd id="breedOrigin"></dd></div>
+        <div><dt>Breed group</dt><dd id="breedGroup"></dd></div>
+      </dl>
+    </section>
+    <section class="breed-fact-group">
+      <h3>Physical Characteristics</h3>
+      <dl class="breed-facts">
+        <div><dt>Size</dt><dd id="breedSize"></dd></div>
+        <div><dt>Male weight</dt><dd id="breedWeight"></dd></div>
+        <div><dt>Female weight</dt><dd id="femaleWeight"></dd></div>
+        <div><dt>Male height</dt><dd id="maleHeight"></dd></div>
+        <div><dt>Female height</dt><dd id="femaleHeight"></dd></div>
+        <div><dt>Coat length</dt><dd id="breedCoat"></dd></div>
+        <div><dt>Coat type</dt><dd id="breedCoatType"></dd></div>
+        <div><dt>Coat colours</dt><dd id="breedCoatColours"></dd></div>
+      </dl>
+    </section>
+    <section class="breed-fact-group">
+      <h3>Personality &amp; Behaviour</h3>
+      <dl class="breed-facts">
+        <div><dt>Energy</dt><dd id="breedEnergy"></dd></div>
+        <div><dt>Trainability</dt><dd id="breedTrainability"></dd></div>
+        <div><dt>Barking</dt><dd id="breedBarking"></dd></div>
+        <div><dt>Good with children</dt><dd id="breedChildren"></dd></div>
+        <div><dt>Good with dogs</dt><dd id="breedDogs"></dd></div>
+        <div><dt>Good with strangers</dt><dd id="breedStrangers"></dd></div>
+      </dl>
+    </section>
+    <section class="breed-fact-group">
+      <h3>Care &amp; Lifestyle</h3>
+      <dl class="breed-facts">
+        <div><dt>Daily exercise</dt><dd id="breedExercise"></dd></div>
+        <div><dt>Shedding</dt><dd id="breedShedding"></dd></div>
+        <div><dt>Grooming needs</dt><dd id="breedGrooming"></dd></div>
+        <div><dt>Drooling</dt><dd id="breedDrooling"></dd></div>
+        <div><dt>Apartment friendly</dt><dd id="breedApartment"></dd></div>
+        <div><dt>Hypoallergenic</dt><dd id="breedHypoallergenic"></dd></div>
+      </dl>
+    </section>
+  </dialog>
+
+  <footer class="container site-footer"><span aria-hidden="true">🐾</span> Dog Breed Explorer · <a href="https://dogapi.dog/">Dog API</a></footer>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.min.js"></script>
+
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/favourites.js"></script>
+  <script src="js/breed-filters.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
